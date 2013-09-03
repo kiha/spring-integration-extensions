@@ -6,6 +6,20 @@ ext.providedDeps = []
 ext.optional = { optionalDeps << it }
 ext.provided = { providedDeps << it }
 
+uploadArchives {
+    repositories {
+	mavenDeployer {
+	repository(url: "https://nexus1.aro.com:8443/nexus/content/repositories/releases") {
+		authentication(userName: "username", password: "password")
+		}
+	pom.version = "0.5.0-BUILD-09032013"
+	pom.groupId = "org.springframework.integration"
+	pom.artifactId = "spring-integration-kafka"
+	}
+    }
+}
+
+
 install {
 	repositories.mavenInstaller {
 		customizePom(pom, project)
